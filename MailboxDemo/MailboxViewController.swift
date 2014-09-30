@@ -36,11 +36,11 @@ class MailboxViewController: UIViewController {
     
     
     // COLOR DEFINITIONS
-    var lightGray = UIColor (white: 0.7, alpha: 1.0)
-    var yellow = UIColor (red: 0.95, green: 0.95, blue: 0.0, alpha: 1.0)
-    var green = UIColor (red: 0.0, green: 0.8, blue: 0.0, alpha: 1.0)
-    var red = UIColor (red: 0.9, green: 0.0, blue: 0.0, alpha: 1.0)
-    var brown = UIColor (red: 205/255, green: 163/255, blue: 63/255, alpha: 1.0)
+    let lightGray = UIColor (white: 0.7, alpha: 1.0)
+    let yellow = UIColor (red: 0.95, green: 0.95, blue: 0.0, alpha: 1.0)
+    let green = UIColor (red: 0.0, green: 0.8, blue: 0.0, alpha: 1.0)
+    let red = UIColor (red: 0.9, green: 0.0, blue: 0.0, alpha: 1.0)
+    let brown = UIColor (red: 205/255, green: 163/255, blue: 63/255, alpha: 1.0)
 
 
 
@@ -55,7 +55,6 @@ class MailboxViewController: UIViewController {
         messageBackgroundView.backgroundColor = lightGray
             
         scrollView.contentSize = CGSize(width: 320, height: 1202+86+42+37)
-        
         
         
         
@@ -99,11 +98,11 @@ class MailboxViewController: UIViewController {
     
     
     func openDrawerWithLocation(location: CGFloat) -> Void {
-        var animateTime = NSTimeInterval(0.3 * ((270 - location) / 270))
+        var animateTime = NSTimeInterval(0.3 * ((280 - location) / 280))
         println("animateTime \(animateTime)")
         println("location \(location)")
         UIView.animateWithDuration(animateTime, animations: { () -> Void in
-            self.contentUIView.frame.origin.x = 270
+            self.contentUIView.frame.origin.x = 280
         })
 
         
@@ -111,7 +110,7 @@ class MailboxViewController: UIViewController {
     
     
     func closeDrawerWithLocation(location: CGFloat) -> Void {
-        var animateTime = NSTimeInterval(0.3 * (location / 270))
+        var animateTime = NSTimeInterval(0.3 * (location / 280))
         UIView.animateWithDuration(animateTime, animations: { () -> Void in
             self.contentUIView.frame.origin.x = 0
             println("animateTime \(animateTime)")
@@ -125,7 +124,7 @@ class MailboxViewController: UIViewController {
     
     func openDrawer() -> Void {
         UIView.animateWithDuration(0.3, animations: { () -> Void in
-            self.contentUIView.frame.origin.x = 270
+            self.contentUIView.frame.origin.x = 280
         })
     }
     
@@ -154,7 +153,7 @@ class MailboxViewController: UIViewController {
     // CLOSING DRAWER BY TAPPING ON CONTENT
     
     @IBAction func viewEdgeTap(sender: UITapGestureRecognizer) {
-        if self.contentUIView.frame.origin.x == 270 {
+        if self.contentUIView.frame.origin.x == 280 {
             closeDrawerWithLocation(CGFloat(contentUIView.frame.origin.x))
 
         }
@@ -273,7 +272,7 @@ class MailboxViewController: UIViewController {
             
             println("message center \(messageImageView.center.x)")
             
-            // ARCHIVE/DELETE
+            // ARCHIVE AND DELETE
             if messageImageView.center.x > 220 {
                 
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
@@ -286,7 +285,7 @@ class MailboxViewController: UIViewController {
 
             }
             
-            // RESCHEDULE/LIST
+            // RESCHEDULE AND LIST
             else if messageImageView.center.x < 100 {
                 
                 UIView.animateWithDuration(0.5, animations: { () -> Void in
